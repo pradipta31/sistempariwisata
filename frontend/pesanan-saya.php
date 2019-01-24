@@ -1,5 +1,5 @@
-<?php 
-  include 'app-atas.php'; 
+<?php
+  include 'app-atas.php';
   include 'koneksi.php';
   session_start();
   $id_pengunjung = ( isset($_SESSION['id_pengunjung']) ) ? $_SESSION['id_pengunjung'] : '';
@@ -20,11 +20,12 @@
                 <th scope="col">Tanggal Pesanan</th>
                 <th scope="col">Pax</th>
                 <th scope="col">Tanggal Pesan</th>
+                <th scope="col">Bukti Transfer</th>
                 <th scope="col">Status</th>
                 </tr>
             </thead>
             <tbody>
-            <?php 
+            <?php
                 $no = 1;
                 $query1 = mysqli_query($koneksi, "SELECT * FROM pemesanan WHERE email = '$email'");
                 while($rows = mysqli_fetch_assoc($query1)){
@@ -32,7 +33,7 @@
                     $query2 = mysqli_query($koneksi, "SELECT * FROM wisata WHERE id_wisata = '$id_wisata'");
                     $rowss = mysqli_fetch_assoc($query2);
             ?>
-            <?php 
+            <?php
                 if(mysqli_num_rows($query1) != 0){
             ?>
                 <tr>
@@ -41,6 +42,20 @@
                     <td><?= $rows['tgl_pesanan']; ?></td>
                     <td><?= $rows['pax']; ?></td>
                     <td><?= $rows['tanggal']; ?></td>
+                    <td>
+                      <?php
+                        if ($rows['bukti_tf'] != null) {
+                      ?>
+                        <a href="images/<?=$rows['bukti_tf']?>" class="btn btn-success">Lihat Bukti Transfer</a>
+                      <?php
+                        }else{
+                      ?>
+                            <a href="upload-bukti-transfer.php?id_pemesanan=<?php echo "$rows[id_pemesanan]";?>" class="btn btn-primary btn-sm">Upload Bukti Transfer</a>
+                      <?php
+                          }
+                      ?>
+
+                    </td>
                     <td>
                     <?php
                         if($rows['status'] == 'nothing'){
@@ -69,7 +84,7 @@
             <br>
             <br>
             <br>
-        </div>  
+        </div>
     </div>
     </div>
   <?php include 'footer.php'; ?>

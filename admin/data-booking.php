@@ -23,7 +23,7 @@
                             <table id="myTable" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th width="10px">No</th>
+                                        <th>No</th>
                                         <th>Nama Tempat</th>
                                         <th>Nama Pemesan</th>
                                         <th>Email Pemesan</th>
@@ -32,11 +32,12 @@
                                         <th>Tanggal Pesanan</th>
                                         <th>Jumlah</th>
                                         <th>Tanggal</th>
+                                        <th>Bukti Transfer</th>
                                         <th>Status</th>
                                         <th>Opsi</th>
                                     </tr>
                                 </thead>
-                                
+
                                 <tbody>
                                 <?php
                                     include "config.php";
@@ -55,6 +56,9 @@
                                         <td><?= $row['handphone']; ?></td>
                                         <td><?= $row['alamat']; ?></td>
                                         <td><?= $row['tgl_pesanan']; ?></td>
+                                        <td>
+                                          <a href="../frontend/images/<?=$row['bukti_tf']?>" class="btn btn-primary">Lihat Bukti Transfer</a>
+                                        </td>
                                         <td><?= $row['pax']; ?> org</td>
                                         <td><?= $row['tanggal']; ?></td>
                                         <td>
@@ -82,13 +86,13 @@
                                                         <input type="submit" name="submitt" class="btn btn-danger" value="Not Approve">
                                                     </form>
                                             <?php
-                                                }else{ 
+                                                }else{
                                             ?>
                                                     <span class="alert alert-success">Approved</span>
                                             <?php
                                                 }
                                             ?>
-                                            
+
                                         </td>
                                     </tr>
                                     <?php
