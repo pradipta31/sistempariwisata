@@ -50,7 +50,7 @@
                                 <div class="form-group">
                                     <label class="col-md-12">Deskripsi tentang saya</label>
                                     <div class="col-md-12">
-                                        <textarea name="deskripsi" class="form-control" id="deskripsi" style="height: 150px"><?= $row['deskripsi']; ?></textarea>
+                                        <textarea name="deskripsi" row="5" class="form-control" style="height: 150px"><?= $row['deskripsi']; ?></textarea>
                                     </div>
                                 </div>
                                 <input type="submit" value="Simpan Perubahan" name="submit_data" class="btn btn-info" style="margin-left: 10px">
